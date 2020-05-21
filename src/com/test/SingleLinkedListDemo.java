@@ -32,7 +32,7 @@ public class SingleLinkedListDemo {
 class SingleLinkedList {
 	// 头节点
 	private HeroNode head = new HeroNode(0, "", "");
-
+ 
 	// 无序添加
 	public void add(HeroNode heronode) {
 		// 因为头节点不能动 所以定义一个辅助节点 帮助判断
