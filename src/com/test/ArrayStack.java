@@ -3,7 +3,7 @@ package com.test;
 public class ArrayStack {
 
 	public static void main(String[] args) {
-		 Stack stack = new Stack(5);
+		Stacks stack = new Stacks(5);
 	        stack.push(1);
 	        stack.push(2);
 	        stack.push(3);
