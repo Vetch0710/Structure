@@ -3,9 +3,9 @@ package com.test;
 public class Calculator {
 
 	public static void main(String[] args) {
-		String expression = "1-2-3*2-6";
-		Stack numstack = new Stack(10);
-		Stack operstack = new Stack(10);
+		String expression = "1-3*3-6";
+		Stack2 numstack = new Stack2(10);
+		Stack2 operstack = new Stack2(10);
 		int index = 0; // 索引 用于扫描
 		int num1 = 0, num2 = 0, oper = 0, res = 0;
 		char ch = ' ';
@@ -82,12 +82,12 @@ public class Calculator {
 
 }
 
-class Stack {
+class Stack2 {
 	int maxsize;
 	int[] arr;
 	int top = -1;
 
-	public Stack(int size) {
+	public Stack2(int size) {
 		maxsize = size;
 		arr = new int[maxsize];
 	}
