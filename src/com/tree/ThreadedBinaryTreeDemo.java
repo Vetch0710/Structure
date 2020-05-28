@@ -3,8 +3,28 @@ package com.tree;
 public class ThreadedBinaryTreeDemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		HeroNode root = new HeroNode(1,"qq");
+		HeroNode node2 = new HeroNode(3,"qq");
+		HeroNode node3 = new HeroNode(6,"qq");
+		HeroNode node4 = new HeroNode(8,"qq");
+		HeroNode node5 = new HeroNode(10,"qq");
+		HeroNode node6 = new HeroNode(14,"qq");
+		root.setLeft(node2);
+		root.setRight(node3);
+		node2.setLeft(node4);
+		node2.setRight(node5);
+		node3.setLeft(node6);
+		
+		
+		BinaryTree3 tree=new BinaryTree3();
+		tree.setRoot(root);
+		tree.ThreadedTree();
+//		System.out.println(node3.getLeft());
+//		System.out.println(node3.getRight());
+		tree.midList();
+		
+		
+		
 	}
 
 }
@@ -13,6 +33,7 @@ public class ThreadedBinaryTreeDemo {
 class BinaryTree3 {
 	private HeroNode root;
 
+	private HeroNode pre;
 	public HeroNode getRoot() {
 		return root;
 	}
@@ -20,36 +41,59 @@ class BinaryTree3 {
 	public void setRoot(HeroNode root) {
 		this.root = root;
 	}
+	public void ThreadedTree() {
+		this.ThreadedTree(root);
+	}
+	public void ThreadedTree(HeroNode node) {
+		//按照中序遍历的顺序
+		if (node==null) {
+			return;
+		}
+		//左遍历
+		ThreadedTree(node.getLeft());
+		//处理当前结点
+		  //前驱节点
+		 if (node.getLeft()==null) {
+			node.setLeft(pre);
+			node.setLeftType(1);
+		}
+		//后继节点
+		if (pre!=null && pre.getRight()==null) {
+			pre.setRight(node);
+			pre.setRightType(1);
+		}
+		
+		//设置pre节点
+		pre=node;
+		
+		//右遍历
+		ThreadedTree(node.getRight());
+		
+	}
+
 	
-	
 
-	// 前序遍历
-	public HeroNode preSearch(int no) {
 
-		if (this.root != null) {
-			return this.root.preSearch(no);
-		} else {
-			return null;
+	// 遍历线索二叉树  中序
+	public void midList() {
+		HeroNode node=root;
+		while (node!=null) {
+			while (node.getLeftType()==0) {
+				node=node.getLeft();
+			}
+			
+			System.out.println(node);
+			
+			while(node.getRightType()==1) {
+				node=node.getRight();
+				System.out.println(node);
+			}
+			
+			node=node.getRight();
 		}
 	}
 
-	// 中序遍历
-	public HeroNode midSearch(int no) {
-		if (this.root != null) {
-			return this.root.midSearch(no);
-		} else {
-			return null;
-		}
-	}
 
-	// 后序遍历
-	public HeroNode postSearch(int no) {
-		if (this.root != null) {
-			return this.root.postSearch(no);
-		} else {
-			return null;
-		}
-	}
 }
 
 
@@ -71,6 +115,22 @@ class HeroNode {
 	
 	
 	
+
+	public int getLeftType() {
+		return leftType;
+	}
+
+	public void setLeftType(int leftType) {
+		this.leftType = leftType;
+	}
+
+	public int getRightType() {
+		return rightType;
+	}
+
+	public void setRightType(int rightType) {
+		this.rightType = rightType;
+	}
 
 	public HeroNode(int no, String name) {
 		this.no = no;
