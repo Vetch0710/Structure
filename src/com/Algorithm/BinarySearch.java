@@ -1,7 +1,7 @@
 package com.Algorithm;
 
 public class BinarySearch {
-
+//二分查找
 	public static void main(String[] args) {
 		int arr[]= {1,3,8,10,11,68,100};
 		int index=binarySearch(arr,11);
