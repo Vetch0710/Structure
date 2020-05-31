@@ -4,8 +4,9 @@ import java.util.Arrays;
 
 public class KMP {
 	public static void main(String[] args) {
-		String str = "BBC ABCDAB ABCDABCDABDE";
-		String str2 = "ABCDABD";
+		String str = "BBC ABCDAB ABABCDABDE";
+//		String str2 = "ABCDABD";
+		String str2 = "ABAB";
 		int[] a = kmpNext(str2);
 		System.out.println(Arrays.toString(a));
 		int index = kmp(str, str2, a);
@@ -30,7 +31,7 @@ public class KMP {
 		return -1;
 	}
 
-//获取到一个字符串的部分匹配值表
+//获取到一个字符串的部分匹配值表   前缀后缀的公共元素的最大长度值
 	public static int[] kmpNext(String dest) {
 		int[] next = new int[dest.length()];
 		next[0] = 0;
