@@ -1,7 +1,7 @@
 package com.Algorithm;
 
 public class KnapsackProblem {
-
+//动态规划法  解决背包问题
 	public static void main(String[] args) {
 		String name[]= {"吉他","电视","冰箱"};
 		int[] w = { 1, 4, 3 }; // 物品的重量
