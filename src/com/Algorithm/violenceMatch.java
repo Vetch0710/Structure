@@ -1,7 +1,7 @@
 package com.Algorithm;
 
 public class violenceMatch {
-
+//暴力匹配
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
